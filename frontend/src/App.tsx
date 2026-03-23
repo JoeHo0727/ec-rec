@@ -15,7 +15,6 @@ import {
   TimerReset,
   UserRoundCheck,
   Workflow,
-  ZoomIn,
 } from 'lucide-react'
 import {
   Background,
@@ -562,11 +561,11 @@ function App() {
                     <div>
                       <div className="section-kicker">Experiment Graph</div>
                       <div className="mt-1 text-sm font-medium text-zinc-800 md:text-[15px]">主链路编排视图</div>
+                      <div className="mt-1 max-w-[56ch] text-[12px] leading-5 text-zinc-500 md:text-[13px]">
+                        当前视图强调召回底座、精排和 AB 分流的依赖关系，点击任意节点即可联动右侧参数台。
+                      </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <div className="micro-chip">
-                        <ZoomIn className="h-3.5 w-3.5" /> drag / zoom / inspect
-                      </div>
                       <div className="micro-chip">
                         <span className="status-dot bg-emerald-500" /> flow healthy
                       </div>
@@ -599,19 +598,7 @@ function App() {
                       <Background id="dots" variant={BackgroundVariant.Dots} gap={20} size={1.05} color="rgba(148, 163, 184, 0.18)" />
                       <Controls showInteractive={false} />
 
-                      <Panel position="top-left">
-                        <Card className="flow-overlay-card motion-enter motion-delay-8 motion-from-left w-[calc(100vw-4rem)] max-w-[340px] border-zinc-200/80 bg-white/90 backdrop-blur-sm">
-                          <CardHeader className="pb-2.5">
-                            <div className="section-kicker">Flow Brief</div>
-                            <CardTitle className="mt-2 text-[1.22rem] tracking-[-0.04em]">首页推荐主链路</CardTitle>
-                            <CardDescription className="mt-2 text-[13px] leading-6">
-                              当前视图强调召回底座、精排和 AB 分流的依赖关系，点击任意节点即可联动右侧参数台。
-                            </CardDescription>
-                          </CardHeader>
-                        </Card>
-                      </Panel>
-
-                      <Panel position="bottom-left">
+                      <Panel position="bottom-center">
                         <div key={`selected-chip-${selectedNodeId}`} className="panel-swap">
                           <div className="micro-chip bg-white/80 backdrop-blur-sm">
                             <span className="status-dot bg-amber-400" /> selected: {selectedNode?.data.subtitle}
@@ -622,19 +609,19 @@ function App() {
                   </div>
                 </div>
 
-                <Card className="side-card ops-overview-card motion-enter motion-delay-8 motion-shift-sm border-zinc-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(241,245,249,0.96))]">
+                <Card className="side-card motion-enter motion-delay-8 motion-shift-sm border-zinc-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(241,245,249,0.94))]">
                   <CardHeader className="pb-2">
-                    <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="section-kicker">Ops Overview</div>
                         <CardTitle className="mt-2 text-[1.08rem] tracking-[-0.03em] text-zinc-950">运行状态与放量观察</CardTitle>
                         <CardDescription className="mt-2 max-w-[62ch] text-[13px] leading-6 text-zinc-700">
-                          用更强的层级把运行面、风险面和放量决策拆开，避免整块信息都糊在同一层浅灰里。
+                          将运行面、风险面和放量节点拆开，便于连续巡检，不打断当前编排视图的阅读节奏。
                         </CardDescription>
                       </div>
-                      <div className="ops-overview-badge">
-                        <span className="status-dot bg-amber-400" /> 3 lanes live
-                      </div>
+                      <Badge variant="outline" className="bg-white/84 text-zinc-700">
+                        <span className="status-dot bg-emerald-500" /> 3 lanes live
+                      </Badge>
                     </div>
                   </CardHeader>
                   <CardContent className="grid gap-4 pt-1 xl:grid-cols-3">
